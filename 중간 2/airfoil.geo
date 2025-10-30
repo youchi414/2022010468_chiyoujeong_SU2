@@ -162,4 +162,55 @@ Line(13) = {132, 134};
 //+
 Circle(14) = {130, 55, 129};
 //+
-Split Curve {1} Point {46, 64};
+Split Curve {1} Point {46, 64};//+
+Split Curve {2} Point {64};
+//+
+Transfinite Curve {16, 17} = n_inlet Using Progression 1;
+//+
+Transfinite Curve {4, 5, 10} = n_vertical Using Progression r_vertical;
+//+
+Transfinite Curve {3, 7, 11} = n_vertical Using Progression r_vertical;
+//+
+Transfinite Curve {9, 6, 13} = n_wake Using Progression r_wake;
+//+
+Transfinite Curve {8, 12} = n_airfoil Using Bump 2;
+//+
+Transfinite Curve {15, 18} = n_airfoil Using Bump 0.2;
+//+
+Curve Loop(2) = {14, -4, 16, 17, 3};
+//+
+Plane Surface(1) = {2};
+//+
+Curve Loop(3) = {4, 8, -5, 15};
+//+
+Plane Surface(2) = {3};
+//+
+Curve Loop(4) = {3, 12, 7, -18};
+//+
+Plane Surface(3) = {4};
+//+
+Curve Loop(5) = {5, 9, -10, -6};
+//+
+Plane Surface(4) = {5};
+//+
+Curve Loop(6) = {7, 6, -11, -13};
+//+
+Plane Surface(5) = {6};
+//+
+Transfinite Surface {1};
+//+
+Transfinite Surface {2};
+//+
+Transfinite Surface {4};
+//+
+Transfinite Surface {5};
+//+
+Transfinite Surface {3};
+//+
+Recombine Surface {1, 2, 4, 5, 3};
+//+
+Physical Curve("farfield", 19) = {14, 8, 9, 10, 11, 13, 12};
+//+
+Physical Curve("airfoil", 20) = {15, 18, 16, 17};
+//+
+Physical Curve("airfoil", 20) += {14, 4, 16, 17, 3};
